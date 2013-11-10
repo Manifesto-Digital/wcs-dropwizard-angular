@@ -1,0 +1,33 @@
+<div class="alert alert-error" ng-show="error">
+    {{errorMessage}}
+</div>
+
+<h3>Articles List</h3>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+        	<th style="text-align: center; width: 25px;">#</th>
+            <th>Article Name</th>
+            <th> </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-repeat="article in filteredArticles">
+            <td>{{article.id}}</td>
+            <td>{{article.name}}</td>
+            <td style="width:100px;text-align: center;">
+                <button class="btn btn-primary" ng-click="viewArticle(article)">
+  					<span class="icon-eye-open icon-white"></span> View
+  				</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div data-pagination="" data-num-pages="numPages()" data-current-page="currentPage" data-max-size="maxSize"  data-boundary-links="true"></div>
+<div class="well" ng-show="viewMode">
+   <h2 ng-bind="article.headlineField"></h2>
+   <h3 ng-bind="article.subheadlineField"></h3>
+   <blockquote ng-bind="article.abstractField"></blockquote>
+   <p ng-bind="article.authorField"></p>
+   <p ng-bind-html-unsafe="article.bodyField"></p>
+</div>
